@@ -1,10 +1,10 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: LXC Base OS
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
+# Copyright 2014, LXCOS
 #
-# All rights reserved - Do Not Redistribute
+# All rights reserved - WTFPL
 #
 package 'lxc' do
   action :install 

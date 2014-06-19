@@ -1,43 +1,20 @@
 base Cookbook
 =============
-TODO: Enter the cookbook description here.
+This Cookbook contains a recipe on which applied to an ubuntu-14.04 installs LXC package and 
+after that the default ubuntu user can start unprivileged containers.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+This cookbook requires Ubuntu-14.04. If you are on Amazon EC2, Use ami-7050ae18
 
-e.g.
-#### packages
-- `toaster` - base needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
-
-e.g.
-#### base::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['base']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
 
 Usage
 -----
-#### base::default
-TODO: Write usage instructions for each cookbook.
+Once you bootstrap a chef node with the above ami, upload this cookbook and run the chef-client on the node.
 
 e.g.
 Just include `base` in your node's `run_list`:
@@ -53,7 +30,7 @@ Just include `base` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+Please feel free to contribute.
 
 e.g.
 1. Fork the repository on Github
@@ -65,4 +42,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Medhamsh
