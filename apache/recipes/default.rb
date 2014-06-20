@@ -2,9 +2,8 @@
 # Cookbook Name:: apache
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
+# Copyright 2014, Medhamsh
 #
-# All rights reserved - Do Not Redistribute
 #
 package 'apache2' do
   action :install

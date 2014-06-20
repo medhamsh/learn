@@ -1,11 +1,13 @@
-apache Cookbook
-===============
-Installs Apache2
+upgrade Cookbook
+================
+Upgrades the base Ubuntu-14.04 for which there wont be any conflicts while applying the baseos recipe.
 
 
 Requirements
 ------------
-Ubuntu 14.04
+Requires Ubuntu 14.04 instance.
+
+
 
 Contributing
 ------------
