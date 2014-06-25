@@ -6,23 +6,43 @@ class Containerinfo
   attr_accessor :name, :type, :memory, :cpus
 end
 
-data = YAML::load(File.open(FILENAME))
+class Drop
+  attr_accessor :name, :droplet
 
-$name = data.first.name
-$type = data.first.type
-$memory = data.first.memory
-$cpus = data.first.cpus
-
-class Drops
-  c = LXC::Container.new("#{$type}")
-  clone = c.clone("#{$name}")
-  sleep(10)
-  d = LXC::Container.new("#{$name}")
-  d.start  
-  sleep(5)
-  d.attach do
-    LXC.run_command('sudo superadmin-init')
+  def initialize(info)
+    @name = info.name
+    drop = new_drop(info.type)
+    drop.clone(@name)
+    sleep(10)
   end
-  @ip = d.ip_addresses
-  puts "#{@ip}"
+
+  def new_drop(param)
+    LXC::Container.new(param)
+  end
+
+  def create_and_start
+    @droplet = new_drop(@name)
+    @droplet.start
+    sleep(5)
+  end
+
+  def attach
+    @droplet.attach do
+     LXC.run_command('sudo superadmin-init')
+    end
+  end
+
+  def get_ips
+    @droplet.ip_addresses
+  end
+end
+
+#get container info
+containers = YAML::load(File.open(FILENAME))
+
+containers.each do |con_info|
+  drop = Drop.new(con_info)
+  drop.create_and_start
+  drop.attach
+  puts drop.get_ips
 end
