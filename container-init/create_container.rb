@@ -20,6 +20,9 @@ class Drops
   d = LXC::Container.new("#{$name}")
   d.start  
   sleep(5)
+  d.attach do
+    LXC.run_command('sudo superadmin-init')
+  end
   @ip = d.ip_addresses
   puts "#{@ip}"
 end
