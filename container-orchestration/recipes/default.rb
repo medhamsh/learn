@@ -9,13 +9,11 @@
 cookbook_file "/usr/local/bin/containerize" do
   owner "root"
   group "root"
-  mode "0755"
-  source "containerize"
+  action :delete
 end
 
 cookbook_file "/usr/local/bin/decontainerize" do
   owner "root"
   group "root"
-  mode "0755"
-  source "decontainerize"
+  action :delete
 end
