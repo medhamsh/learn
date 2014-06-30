@@ -13,7 +13,7 @@ defaults
         clitimeout 50000
         srvtimeout 50000
 
-<% @containers.each |name, ip| do%>
+<% @containers.each do |name, ip| %>
 listen <%=name.upcase %> :<%= (@start_port+=1) %>
   mode http
   server <%= name %> <%= ip %>:<%= 80 %>
