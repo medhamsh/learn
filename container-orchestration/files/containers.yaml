@@ -1,0 +1,6 @@
+---
+- !ruby/object:Containerinfo
+    name: bounty
+    type: lamp
+    memory: 128
+    cpus: 1

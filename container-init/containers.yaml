@@ -1,6 +1,0 @@
----
-- !ruby/object:Containerinfo
-    name: brown
-    type: lamp
-    memory: 134217728
-    cpus: 0

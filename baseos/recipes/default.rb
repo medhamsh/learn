@@ -6,18 +6,69 @@
 #
 # All rights reserved - WTFPL
 #
-package 'lxc' do
-  action :install 
+package 'liblxc1'
+package 'lxc'
+package 'lxc-dev'
+package 'lxc-templates'
+package 'python3-lxc'
+package 'build-essential'
+package 'haproxy'
+
+gem_package 'ruby-lxc' do
+  gem_binary '/opt/chef/embedded/bin/gem'
+  version '1.1'
 end
 
-package 'systemd-services' do
-  action :install
+gem_package 'sshkey' do
+  gem_binary '/opt/chef/embedded/bin/gem'
 end
 
-package 'uidmap' do
-  action :install
+gem_package 'serfx' do
+  gem_binary '/opt/chef/embedded/bin/gem'
 end
 
+user 'goatos' do
+  home '/opt/goatos'
+  supports(manage_home: true)
+end
+
+directory '/opt/goatos/.config' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0700
+end
+
+directory '/opt/goatos/.config/lxc' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0775
+end
+
+directory '/opt/goatos/.local' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
+end
+
+directory '/opt/goatos/.local/share' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
+end
+
+directory '/opt/goatos/.local/share/lxc' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
+end
+
+directory '/opt/goatos/.local/share/lxcsnaps' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
+end
+
+<<<<<<< HEAD
 package 'haproxy' do
   action :install
 end
@@ -27,29 +78,35 @@ cookbook_file "/etc/lxc/lxc-usernet" do
   group "root"
   mode "0644"
   source "lxc-usernet"
+=======
+directory '/opt/goatos/.cache' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
+>>>>>>> 2476a01dfd003ee37d9febf276759c89509c823e
 end
 
-directory "/home/ubuntu/.config" do
-  action :create
-  owner "ubuntu"
-  group "ubuntu"
-  mode "0700"
+directory '/opt/goatos/.cache/lxc' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
 end
 
-directory "/home/ubuntu/.config/lxc" do
-  action :create
-  owner "ubuntu"
-  group "ubuntu"
-  mode "0775"
+directory '/opt/goatos/.ssh' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0700
 end
 
-cookbook_file "/home/ubuntu/.config/lxc/default.conf" do
-  owner "ubuntu"
-  group "ubuntu"
-  mode "0664"
-  source "default.conf"
+directory '/opt/goatos/lxc.conf.d' do
+  user node['goatos']['user']
+  group node['goatos']['group']
+  mode 0751
 end
 
-directory "/home/ubuntu" do
-  mode "0755"
+file '/etc/lxc/lxc-usernet' do
+  owner 'root'
+  group 'root'
+  mode 0644
+  content "#{node['goatos']['user']} veth lxcbr0 100\n"
 end

@@ -6,16 +6,14 @@
 #
 #
 
-cookbook_file "/usr/local/bin/containerize" do
+cookbook_file "/usr/local/bin/create_container.rb" do
   owner "root"
   group "root"
-  mode "0755"
-  source "containerize"
+  source "create_container.rb"
 end
 
-cookbook_file "/usr/local/bin/decontainerize" do
+cookbook_file "/usr/local/bin/containers.yaml" do
   owner "root"
   group "root"
-  mode "0755"
-  source "decontainerize"
+  source "containers.yaml"
 end
