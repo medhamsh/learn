@@ -18,6 +18,10 @@ package 'uidmap' do
   action :install
 end
 
+package 'haproxy' do
+  action :install
+end
+
 cookbook_file "/etc/lxc/lxc-usernet" do
   owner "root"
   group "root"
